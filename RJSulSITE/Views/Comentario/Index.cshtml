@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RJSulSITE.Models.Comentario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Conteudo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataComentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conteudo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataComentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topico.TopicoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ComentarioID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ComentarioID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ComentarioID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
